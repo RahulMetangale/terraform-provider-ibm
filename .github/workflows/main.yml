@@ -1,0 +1,14 @@
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  print_issue_title_and_body:
+    runs-on: ubuntu-latest
+    container: node:16
+    steps:
+    - run: node --version
+    - run: npm --version
+    - name: View issue information
+      run: |
+        echo "Issue title: ${{ github.event.issue.title }}"
+        echo "Issue body: ${{ github.event.issue.body }}"
